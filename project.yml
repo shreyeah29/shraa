@@ -1,0 +1,68 @@
+name: Shraa
+options:
+  bundleIdPrefix: com.shreya
+  deploymentTarget:
+    iOS: "17.0"
+  createIntermediateGroups: true
+
+settings:
+  base:
+    SWIFT_VERSION: "5.0"
+    MARKETING_VERSION: "0.1.0"
+    CURRENT_PROJECT_VERSION: "1"
+    # Put your Apple Team ID here (Xcode > Settings > Accounts), or pick the team in Signing & Capabilities.
+    DEVELOPMENT_TEAM: ""
+    CODE_SIGN_STYLE: Automatic
+
+targets:
+  Shraa:
+    type: application
+    platform: iOS
+    sources:
+      - path: Shraa
+    info:
+      path: Shraa/Info.plist
+      properties:
+        CFBundleDisplayName: Shraa
+        UILaunchScreen: {}
+        UISupportedInterfaceOrientations: [UIInterfaceOrientationPortrait]
+        ITSAppUsesNonExemptEncryption: false
+        NSHealthShareUsageDescription: "Shraa reads your steps, workouts, sleep and water so it can track your goals and nag you at the right time."
+        NSHealthUpdateUsageDescription: "Shraa saves the water you log to Apple Health."
+        NSFaceIDUsageDescription: "Shraa uses Face ID to keep your money data private."
+        UIBackgroundModes: [fetch, processing]
+        BGTaskSchedulerPermittedIdentifiers: [com.shreya.shraa.replan]
+    entitlements:
+      path: Shraa/Shraa.entitlements
+      properties:
+        com.apple.developer.healthkit: true
+        com.apple.developer.healthkit.access: []
+        com.apple.developer.healthkit.background-delivery: true
+        com.apple.developer.usernotifications.time-sensitive: true
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.shreya.shraa
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
+        TARGETED_DEVICE_FAMILY: "1"
+
+  ShraaTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - path: ShraaTests
+    dependencies:
+      - target: Shraa
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.shreya.shraa.tests
+        GENERATE_INFOPLIST_FILE: YES
+
+schemes:
+  Shraa:
+    build:
+      targets:
+        Shraa: all
+        ShraaTests: [test]
+    test:
+      targets: [ShraaTests]
