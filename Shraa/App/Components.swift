@@ -222,8 +222,8 @@ struct TxnRow: View {
             VStack(alignment: .trailing, spacing: 3) {
                 Text((txn.direction == .debit ? "−" : "+") + txn.amount.rupees)
                     .font(.subheadline.weight(.semibold))
-                    .foregroundStyle(txn.isTransfer ? .secondary :
-                                     txn.direction == .debit ? .primary : .green)
+                    .foregroundStyle(txn.isTransfer ? AnyShapeStyle(.secondary) :
+                                     txn.direction == .debit ? AnyShapeStyle(.primary) : AnyShapeStyle(Color.green))
                     .monospacedDigit()
                 Text(txn.date.formatted(date: .abbreviated, time: .omitted))
                     .font(.caption2).foregroundStyle(.secondary)
