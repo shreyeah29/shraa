@@ -11,10 +11,12 @@
 		078CA2753D2C81814C504B99 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C5610CFF2C846210F2F6CA7D /* Assets.xcassets */; };
 		1CFD46102A0E61575C3920A1 /* BankSMSParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19253682CA3CA23CB92298C2 /* BankSMSParserTests.swift */; };
 		1E5DFC85E86C60D30D0EEA76 /* AppIntents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8FA9A8D5D47BE80A81954F /* AppIntents.swift */; };
+		235C78A86B16ECEA34E756DB /* GymProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F147C2774EBD8340F316D5A /* GymProgressView.swift */; };
 		3F0952213ECFD6834E1F63BE /* HealthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE8F36399979B6E1154E4FE /* HealthView.swift */; };
 		404619EC7CB4821A387A6695 /* NudgeLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09813413C81F0D679CF3E2A /* NudgeLibrary.swift */; };
 		4BBA2E22C4B91FDC270F7587 /* MoneyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5990CE14D0349D7E488BF25 /* MoneyView.swift */; };
 		4EE385A599FF8211C006554A /* Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39455E9D974FB0947577B73 /* Components.swift */; };
+		538D482A99110B87205EC3E5 /* SkincareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F89B43C76C3E3CB11BF2E8 /* SkincareView.swift */; };
 		5D70CF2F132C18B819A8DB2C /* TxnIngest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9D23EFF4F7B60759734941 /* TxnIngest.swift */; };
 		695F19D86CD7B1211F89ABD4 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CBC4E09FFBA28C065AF47C9 /* Settings.swift */; };
 		76410AF2CBB23DE354BAB65B /* ShraaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD801B41C1BFE9AA3C5EB7E0 /* ShraaApp.swift */; };
@@ -23,13 +25,16 @@
 		88341CCCD3E0979A7C84144A /* SpendCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEB3E68624BF342473992B43 /* SpendCategory.swift */; };
 		8F2B0B304620725401CA642F /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8618941799032B568BD55B86 /* OnboardingView.swift */; };
 		92A8207924E061968B23C398 /* WorkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D2FBBDDE5197A608024E3B /* WorkView.swift */; };
+		9A7F878F1904EF03AA491B52 /* WellnessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08743463E0EF673F73B02317 /* WellnessView.swift */; };
 		B09E6E25261FC5C47CE90B9E /* NudgeScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A29026DF50FBF88A33931A /* NudgeScheduler.swift */; };
+		B5AB5ABF1DC3C2C8EE08115F /* ProgressGalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D321777A1EC04BBEFBF4C09 /* ProgressGalleryView.swift */; };
 		D14F1B0AC91AEDF99C552C31 /* TodayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55157E86E522DFE1E93651F8 /* TodayView.swift */; };
 		D624F4C17424895CAEE32392 /* Categorizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6115AA5138869F0675C0FE57 /* Categorizer.swift */; };
 		DA2A35D77F1ACDABBCD55996 /* BankSMSParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D61D1114677580601301FF /* BankSMSParser.swift */; };
 		E75D9ED73D0D249E5AD82D71 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB84E084AB8B03FBD607E54 /* Models.swift */; };
 		E84A9096ABF4B551B2EA7257 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128D0C3F5D6969FD03717623 /* AppDelegate.swift */; };
 		EA508504953FDEF7E0F3C5B8 /* MoneyManageViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = E269F1271E467C24A99BC6F4 /* MoneyManageViews.swift */; };
+		F61A5A099CFFCEC07654EBB0 /* NutritionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363CC1F1044FFA042D5C326B /* NutritionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,17 +48,22 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		08743463E0EF673F73B02317 /* WellnessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WellnessView.swift; sourceTree = "<group>"; };
 		0CBC4E09FFBA28C065AF47C9 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		128D0C3F5D6969FD03717623 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		17D2FBBDDE5197A608024E3B /* WorkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkView.swift; sourceTree = "<group>"; };
 		186178BDF3C9E23A74A60622 /* ShraaTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = ShraaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		19253682CA3CA23CB92298C2 /* BankSMSParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankSMSParserTests.swift; sourceTree = "<group>"; };
+		2D321777A1EC04BBEFBF4C09 /* ProgressGalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressGalleryView.swift; sourceTree = "<group>"; };
 		32D61D1114677580601301FF /* BankSMSParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankSMSParser.swift; sourceTree = "<group>"; };
+		363CC1F1044FFA042D5C326B /* NutritionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionView.swift; sourceTree = "<group>"; };
 		40A29026DF50FBF88A33931A /* NudgeScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NudgeScheduler.swift; sourceTree = "<group>"; };
 		4D8FA9A8D5D47BE80A81954F /* AppIntents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIntents.swift; sourceTree = "<group>"; };
 		55157E86E522DFE1E93651F8 /* TodayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayView.swift; sourceTree = "<group>"; };
 		6115AA5138869F0675C0FE57 /* Categorizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Categorizer.swift; sourceTree = "<group>"; };
+		6F147C2774EBD8340F316D5A /* GymProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GymProgressView.swift; sourceTree = "<group>"; };
 		7AE8F36399979B6E1154E4FE /* HealthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthView.swift; sourceTree = "<group>"; };
+		82F89B43C76C3E3CB11BF2E8 /* SkincareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkincareView.swift; sourceTree = "<group>"; };
 		8618941799032B568BD55B86 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		9C24E999EC1FDCE64BB7BE2C /* MoneyStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyStats.swift; sourceTree = "<group>"; };
 		9FB84E084AB8B03FBD607E54 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
@@ -114,6 +124,7 @@
 			children = (
 				BA046D2F0E8A162B232210D0 /* Health */,
 				C38A363863CAA42D981C8716 /* Money */,
+				AA99DC1BC9D4B675409FEACE /* Wellness */,
 				61AB2129856FEE4C0FB0E1B8 /* Work */,
 			);
 			path = Features;
@@ -142,6 +153,18 @@
 				D74995D2EF7139BE403AFFC0 /* ShraaTests */,
 				D0B05F0DD2E768299048BB19 /* Products */,
 			);
+			sourceTree = "<group>";
+		};
+		AA99DC1BC9D4B675409FEACE /* Wellness */ = {
+			isa = PBXGroup;
+			children = (
+				6F147C2774EBD8340F316D5A /* GymProgressView.swift */,
+				363CC1F1044FFA042D5C326B /* NutritionView.swift */,
+				2D321777A1EC04BBEFBF4C09 /* ProgressGalleryView.swift */,
+				82F89B43C76C3E3CB11BF2E8 /* SkincareView.swift */,
+				08743463E0EF673F73B02317 /* WellnessView.swift */,
+			);
+			path = Wellness;
 			sourceTree = "<group>";
 		};
 		BA046D2F0E8A162B232210D0 /* Health */ = {
@@ -285,6 +308,7 @@
 				DA2A35D77F1ACDABBCD55996 /* BankSMSParser.swift in Sources */,
 				D624F4C17424895CAEE32392 /* Categorizer.swift in Sources */,
 				4EE385A599FF8211C006554A /* Components.swift in Sources */,
+				235C78A86B16ECEA34E756DB /* GymProgressView.swift in Sources */,
 				7A92523B9CB4703D5D440B25 /* HealthService.swift in Sources */,
 				3F0952213ECFD6834E1F63BE /* HealthView.swift in Sources */,
 				E75D9ED73D0D249E5AD82D71 /* Models.swift in Sources */,
@@ -293,13 +317,17 @@
 				4BBA2E22C4B91FDC270F7587 /* MoneyView.swift in Sources */,
 				404619EC7CB4821A387A6695 /* NudgeLibrary.swift in Sources */,
 				B09E6E25261FC5C47CE90B9E /* NudgeScheduler.swift in Sources */,
+				F61A5A099CFFCEC07654EBB0 /* NutritionView.swift in Sources */,
 				8F2B0B304620725401CA642F /* OnboardingView.swift in Sources */,
+				B5AB5ABF1DC3C2C8EE08115F /* ProgressGalleryView.swift in Sources */,
 				695F19D86CD7B1211F89ABD4 /* Settings.swift in Sources */,
 				065D63F93386F5FA96702D1B /* SettingsView.swift in Sources */,
 				76410AF2CBB23DE354BAB65B /* ShraaApp.swift in Sources */,
+				538D482A99110B87205EC3E5 /* SkincareView.swift in Sources */,
 				88341CCCD3E0979A7C84144A /* SpendCategory.swift in Sources */,
 				D14F1B0AC91AEDF99C552C31 /* TodayView.swift in Sources */,
 				5D70CF2F132C18B819A8DB2C /* TxnIngest.swift in Sources */,
+				9A7F878F1904EF03AA491B52 /* WellnessView.swift in Sources */,
 				92A8207924E061968B23C398 /* WorkView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

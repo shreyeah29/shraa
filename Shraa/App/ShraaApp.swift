@@ -35,6 +35,8 @@ struct RootView: View {
                         .tabItem { Label("Work", systemImage: "checklist") }.tag(2)
                     HealthView()
                         .tabItem { Label("Health", systemImage: "figure.walk") }.tag(3)
+                    WellnessView()
+                        .tabItem { Label("Glow", systemImage: "sparkles") }.tag(4)
                 }
             } else {
                 OnboardingView()

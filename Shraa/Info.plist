@@ -32,6 +32,8 @@
 	<string>Shraa reads your steps, workouts, sleep and water so it can track your goals and nag you at the right time.</string>
 	<key>NSHealthUpdateUsageDescription</key>
 	<string>Shraa saves the water you log to Apple Health.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Shraa saves your progress photos so you can track your gym and skin journey.</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>fetch</string>

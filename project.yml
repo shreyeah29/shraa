@@ -30,6 +30,7 @@ targets:
         NSHealthShareUsageDescription: "Shraa reads your steps, workouts, sleep and water so it can track your goals and nag you at the right time."
         NSHealthUpdateUsageDescription: "Shraa saves the water you log to Apple Health."
         NSFaceIDUsageDescription: "Shraa uses Face ID to keep your money data private."
+        NSPhotoLibraryUsageDescription: "Shraa saves your progress photos so you can track your gym and skin journey."
         UIBackgroundModes: [fetch, processing]
         BGTaskSchedulerPermittedIdentifiers: [com.shreya.shraa.replan]
     entitlements:

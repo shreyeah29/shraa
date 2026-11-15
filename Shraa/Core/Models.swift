@@ -264,12 +264,179 @@ final class MealLog {
     }
 }
 
+// MARK: - Nutrition
+
+@Model
+final class FoodEntry {
+    var date: Date
+    var mealKindRaw: String
+    var name: String
+    var calories: Double
+    var protein: Double
+    var carbs: Double
+    var fat: Double
+    var servingG: Double
+    var brand: String
+
+    var mealKind: MealKind { MealKind(rawValue: mealKindRaw) ?? .snack }
+
+    init(name: String, brand: String = "", calories: Double, protein: Double = 0,
+         carbs: Double = 0, fat: Double = 0, servingG: Double = 100,
+         mealKind: MealKind, date: Date = .now) {
+        self.name = name
+        self.brand = brand
+        self.calories = calories
+        self.protein = protein
+        self.carbs = carbs
+        self.fat = fat
+        self.servingG = servingG
+        self.mealKindRaw = mealKind.rawValue
+        self.date = date
+    }
+}
+
+// MARK: - Gym PRs
+
+@Model
+final class PRLog {
+    var date: Date
+    var exercise: String
+    var weightKg: Double
+    var reps: Int
+    var sets: Int
+    var notes: String
+
+    var oneRepMax: Double { weightKg * (1 + Double(reps) / 30.0) }
+
+    init(exercise: String, weightKg: Double, reps: Int, sets: Int = 3,
+         notes: String = "", date: Date = .now) {
+        self.exercise = exercise
+        self.weightKg = weightKg
+        self.reps = reps
+        self.sets = sets
+        self.notes = notes
+        self.date = date
+    }
+}
+
+// MARK: - Progress Photos
+
+enum ProgressPhotoCategory: String, Codable, CaseIterable, Identifiable {
+    case gym, skin
+    var id: String { rawValue }
+    var label: String { rawValue.capitalized }
+    var icon: String { self == .gym ? "dumbbell.fill" : "face.smiling" }
+}
+
+@Model
+final class ProgressPhoto {
+    var date: Date
+    var categoryRaw: String
+    var imageData: Data
+    var note: String
+
+    var category: ProgressPhotoCategory { ProgressPhotoCategory(rawValue: categoryRaw) ?? .gym }
+
+    init(imageData: Data, category: ProgressPhotoCategory, note: String = "", date: Date = .now) {
+        self.imageData = imageData
+        self.categoryRaw = category.rawValue
+        self.note = note
+        self.date = date
+    }
+}
+
+// MARK: - Skincare
+
+enum SkincareStep: String, Codable, CaseIterable, Identifiable {
+    case cleanser, toner, serum, moisturiser, sunscreen, eyeCream, retinol, treatment, other
+    var id: String { rawValue }
+    var label: String {
+        switch self {
+        case .cleanser: return "Cleanser"
+        case .toner: return "Toner"
+        case .serum: return "Serum"
+        case .moisturiser: return "Moisturiser"
+        case .sunscreen: return "Sunscreen"
+        case .eyeCream: return "Eye Cream"
+        case .retinol: return "Retinol"
+        case .treatment: return "Treatment"
+        case .other: return "Other"
+        }
+    }
+    var icon: String {
+        switch self {
+        case .cleanser: return "drop.fill"
+        case .toner: return "sparkles"
+        case .serum: return "testtube.2"
+        case .moisturiser: return "cloud.fill"
+        case .sunscreen: return "sun.max.fill"
+        case .eyeCream: return "eye.fill"
+        case .retinol: return "moon.stars.fill"
+        case .treatment: return "cross.case.fill"
+        case .other: return "circle.fill"
+        }
+    }
+}
+
+enum SkincareTime: String, Codable, CaseIterable, Identifiable {
+    case am, pm, both
+    var id: String { rawValue }
+    var label: String { self == .am ? "Morning" : self == .pm ? "Night" : "AM + PM" }
+}
+
+@Model
+final class SkincareProduct {
+    var name: String
+    var brand: String
+    var stepRaw: String
+    var timeRaw: String
+    var isActive: Bool
+    var order: Int
+
+    var step: SkincareStep { SkincareStep(rawValue: stepRaw) ?? .other }
+    var time: SkincareTime { SkincareTime(rawValue: timeRaw) ?? .am }
+
+    init(name: String, brand: String = "", step: SkincareStep,
+         time: SkincareTime = .am, order: Int = 0) {
+        self.name = name
+        self.brand = brand
+        self.stepRaw = step.rawValue
+        self.timeRaw = time.rawValue
+        self.isActive = true
+        self.order = order
+    }
+}
+
+@Model
+final class SkincareLog {
+    var date: Date
+    var timeRaw: String
+    var completedProductNames: [String]
+    var skinRating: Int      // 1–5
+    var concerns: [String]   // oily, dry, breakout, redness, dull
+    var note: String
+
+    var time: SkincareTime { SkincareTime(rawValue: timeRaw) ?? .am }
+
+    init(time: SkincareTime, completedProductNames: [String] = [],
+         skinRating: Int = 3, concerns: [String] = [], note: String = "", date: Date = .now) {
+        self.timeRaw = time.rawValue
+        self.completedProductNames = completedProductNames
+        self.skinRating = skinRating
+        self.concerns = concerns
+        self.note = note
+        self.date = date
+    }
+}
+
 // MARK: - Shared container
 
 enum DataStore {
     static let schema = Schema([
         Account.self, Txn.self, Budget.self, MerchantRule.self, UnparsedSMS.self,
-        Project.self, TaskItem.self, WaterLog.self, GymLog.self, MealLog.self
+        Project.self, TaskItem.self, WaterLog.self, GymLog.self, MealLog.self,
+        FoodEntry.self, PRLog.self, ProgressPhoto.self,
+        SkincareProduct.self, SkincareLog.self
     ])
 
     /// One container for the app, App Intents and background tasks.
