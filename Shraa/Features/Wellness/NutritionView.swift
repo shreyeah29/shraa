@@ -15,17 +15,22 @@ struct OFFProduct: Decodable {
 }
 
 struct OFFNutriments: Decodable {
-    let energy100g: Double?
+    let energyKcal100g: Double?
+    let energyKj100g: Double?   // fallback: many products only store kJ
     let proteins100g: Double?
     let carbohydrates100g: Double?
     let fat100g: Double?
-    let servingSize: String?
     enum CodingKeys: String, CodingKey {
-        case energy100g = "energy-kcal_100g"
+        case energyKcal100g = "energy-kcal_100g"
+        case energyKj100g = "energy_100g"
         case proteins100g = "proteins_100g"
         case carbohydrates100g = "carbohydrates_100g"
         case fat100g = "fat_100g"
-        case servingSize = "serving_size"
+    }
+    var kcalPer100g: Double {
+        if let kcal = energyKcal100g, kcal > 0 { return kcal }
+        if let kj = energyKj100g, kj > 0 { return kj / 4.184 }
+        return 0
     }
 }
 
@@ -66,7 +71,7 @@ class FoodSearchVM: ObservableObject {
                 return FoodSearchResult(
                     name: name,
                     brand: p.brands ?? "",
-                    caloriesPer100g: n?.energy100g ?? 0,
+                    caloriesPer100g: n?.kcalPer100g ?? 0,
                     protein: n?.proteins100g ?? 0,
                     carbs: n?.carbohydrates100g ?? 0,
                     fat: n?.fat100g ?? 0
@@ -405,27 +410,66 @@ struct FoodSearchSheet: View {
                 }
 
                 Card {
-                    VStack(spacing: 12) {
-                        HStack {
-                            Text("Serving size")
-                                .font(.subheadline)
-                            Spacer()
-                            TextField("g", value: $servingG, format: .number)
-                                .keyboardType(.decimalPad)
-                                .multilineTextAlignment(.trailing)
-                                .frame(width: 80)
-                            Text("g")
-                                .foregroundStyle(.secondary)
+                    VStack(spacing: 16) {
+                        // Serving presets
+                        VStack(alignment: .leading, spacing: 8) {
+                            Text("How much?")
+                                .font(.subheadline.weight(.semibold))
+                            HStack(spacing: 8) {
+                                ForEach([50.0, 100.0, 150.0, 200.0, 250.0], id: \.self) { g in
+                                    Button {
+                                        servingG = g
+                                    } label: {
+                                        Text("\(Int(g))g")
+                                            .font(.caption.weight(.semibold))
+                                            .padding(.horizontal, 12)
+                                            .padding(.vertical, 7)
+                                            .background(servingG == g ? Color.brandCoral : Color.surface)
+                                            .foregroundStyle(servingG == g ? Color.white : Color.secondary)
+                                            .clipShape(Capsule())
+                                    }
+                                    .buttonStyle(.plain)
+                                }
+                            }
                         }
+
+                        // Stepper
+                        HStack {
+                            Button {
+                                servingG = max(10, servingG - 10)
+                            } label: {
+                                Image(systemName: "minus.circle.fill")
+                                    .font(.title2)
+                                    .foregroundStyle(Color.brandCoral)
+                            }
+                            Spacer()
+                            VStack(spacing: 2) {
+                                Text("\(Int(servingG)) g")
+                                    .font(.system(size: 28, weight: .bold, design: .rounded))
+                                    .foregroundStyle(Color.brandCoral)
+                                Text("serving size")
+                                    .font(.caption2)
+                                    .foregroundStyle(.secondary)
+                            }
+                            Spacer()
+                            Button {
+                                servingG = servingG + 10
+                            } label: {
+                                Image(systemName: "plus.circle.fill")
+                                    .font(.title2)
+                                    .foregroundStyle(Color.brandCoral)
+                            }
+                        }
+                        .padding(.vertical, 4)
 
                         Divider()
 
                         let multiplier = servingG / 100.0
                         Group {
-                            macroRow2("Calories", value: food.caloriesPer100g * multiplier, color: Color.brandCoral)
-                            macroRow2("Protein", value: food.protein * multiplier, color: Color.brandAmber)
-                            macroRow2("Carbs", value: food.carbs * multiplier, color: Color.indigo)
-                            macroRow2("Fat", value: food.fat * multiplier, color: Color.secondary)
+                            macroRow2("🔥 Calories", value: food.caloriesPer100g * multiplier, color: Color.brandCoral)
+                            macroRow2("💪 Protein", value: food.protein * multiplier, color: Color.brandAmber)
+                            macroRow2("🌾 Carbs", value: food.carbs * multiplier, color: Color.indigo)
+                            macroRow2("🥑 Fat", value: food.fat * multiplier, color: Color.secondary)
                         }
                     }
                 }
